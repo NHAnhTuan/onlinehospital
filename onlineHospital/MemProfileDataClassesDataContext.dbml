@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="OnlHospital" Class="MemProfileDataClassesDataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\OnlHospital.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="OnlHospitalConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Account" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AdminType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="avatarImageUrl" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Admin_Thread" Member="Threads" ThisKey="AdminID" OtherKey="AdminID" Type="Thread" />
+      <Association Name="UserType_Admin" Member="UserType" ThisKey="AdminType" OtherKey="TypeID" Type="UserType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Doctor" Member="Doctors">
+    <Type Name="Doctor">
+      <Column Name="DoctorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Salary" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Specialization" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="VoteStar" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearOfExperience" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="avatarImageUrl" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DoctorType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Doctor_Post" Member="Posts" ThisKey="DoctorID" OtherKey="DoctorID" Type="Post" />
+      <Association Name="Doctor_Prescription" Member="Prescriptions" ThisKey="DoctorID" OtherKey="DoctorID" Type="Prescription" />
+      <Association Name="UserType_Doctor" Member="UserType" ThisKey="DoctorType" OtherKey="TypeID" Type="UserType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Drug" Member="Drugs">
+    <Type Name="Drug">
+      <Column Name="DrugID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExpiredDay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NameOfDrug" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="Drug_Prescription_Detail" Member="Prescription_Details" ThisKey="DrugID" OtherKey="DrugID" Type="Prescription_Detail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmergencyLevel" Member="EmergencyLevels">
+    <Type Name="EmergencyLevel">
+      <Column Name="PatientInformation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrescriptionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Prescription_EmergencyLevel" Member="Prescription" ThisKey="PrescriptionID" OtherKey="PrescriptionID" Type="Prescription" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Parameters" Member="Parameters">
+    <Type Name="Parameter">
+      <Column Name="ParamID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Satus" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ParamName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patient" Member="Patients">
+    <Type Name="Patient">
+      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Full_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Patient_State" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="avatarImageUrl" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PatientType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Patient_Patient_Document" Member="Patient_Document" ThisKey="PatientID" OtherKey="PatientInformation" Type="Patient_Document" Cardinality="One" />
+      <Association Name="Patient_Thread" Member="Threads" ThisKey="PatientID" OtherKey="PatientID" Type="Thread" />
+      <Association Name="Patient_Vip_Account" Member="Vip_Account" ThisKey="PatientID" OtherKey="PatientID" Type="Vip_Account" Cardinality="One" />
+      <Association Name="UserType_Patient" Member="UserType" ThisKey="PatientType" OtherKey="TypeID" Type="UserType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Patient Document]" Member="Patient_Documents">
+    <Type Name="Patient_Document">
+      <Column Name="DateOfOpenDocument" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HostpitalName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="PatientInformation" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Patient_Document_Prescription" Member="Prescriptions" ThisKey="PatientInformation" OtherKey="PatientInformation" Type="Prescription" />
+      <Association Name="Patient_Patient_Document" Member="Patient" ThisKey="PatientInformation" OtherKey="PatientID" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Post" Member="Posts">
+    <Type Name="Post">
+      <Column Name="PostID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ContentOfPost" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PostbyDoctor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PostbyPatient" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ThreadID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DoctorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Doctor_Post" Member="Doctor" ThisKey="DoctorID" OtherKey="DoctorID" Type="Doctor" IsForeignKey="true" />
+      <Association Name="Thread_Post" Member="Thread" ThisKey="ThreadID" OtherKey="ThreadID" Type="Thread" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prescription" Member="Prescriptions">
+    <Type Name="Prescription">
+      <Column Name="DateOfDiagnose" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateOfReExam" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DiseaseName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmergencyLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ListOfDrugs" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PatientInformation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AttendingDoctor" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="DoctorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrescriptionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Prescription_EmergencyLevel" Member="EmergencyLevel1" ThisKey="PrescriptionID" OtherKey="PrescriptionID" Type="EmergencyLevel" Cardinality="One" />
+      <Association Name="Prescription_Prescription_Detail" Member="Prescription_Details" ThisKey="PrescriptionID" OtherKey="PrescriptionID" Type="Prescription_Detail" />
+      <Association Name="Doctor_Prescription" Member="Doctor" ThisKey="DoctorID" OtherKey="DoctorID" Type="Doctor" IsForeignKey="true" />
+      <Association Name="Patient_Document_Prescription" Member="Patient_Document" ThisKey="PatientInformation" OtherKey="PatientInformation" Type="Patient_Document" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Prescription Detail]" Member="Prescription_Details">
+    <Type Name="Prescription_Detail">
+      <Column Name="DrugID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PrescriptionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Dosage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Drug_Prescription_Detail" Member="Drug" ThisKey="DrugID" OtherKey="DrugID" Type="Drug" IsForeignKey="true" />
+      <Association Name="Prescription_Prescription_Detail" Member="Prescription" ThisKey="PrescriptionID" OtherKey="PrescriptionID" Type="Prescription" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserFullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserLoginName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserLoginPassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="UserType_User" Member="UserType1" ThisKey="UserType" OtherKey="TypeID" Type="UserType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Thread" Member="Threads">
+    <Type Name="Thread">
+      <Column Name="ThreadID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NameOfIssue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NameOfPatient" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PatientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdminID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Thread_Post" Member="Posts" ThisKey="ThreadID" OtherKey="ThreadID" Type="Post" />
+      <Association Name="Admin_Thread" Member="Admin" ThisKey="AdminID" OtherKey="AdminID" Type="Admin" IsForeignKey="true" />
+      <Association Name="Patient_Thread" Member="Patient" ThisKey="PatientID" OtherKey="PatientID" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserType" Member="UserTypes">
+    <Type Name="UserType">
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="UserType_Admin" Member="Admins" ThisKey="TypeID" OtherKey="AdminType" Type="Admin" />
+      <Association Name="UserType_Doctor" Member="Doctors" ThisKey="TypeID" OtherKey="DoctorType" Type="Doctor" />
+      <Association Name="UserType_Patient" Member="Patients" ThisKey="TypeID" OtherKey="PatientType" Type="Patient" />
+      <Association Name="UserType_User" Member="Users" ThisKey="TypeID" OtherKey="UserType" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Vip Account]" Member="Vip_Accounts">
+    <Type Name="Vip_Account">
+      <Column Name="Expired_Day" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Private_Doctor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Visa_Card_Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Patient_Vip_Account" Member="Patient" ThisKey="PatientID" OtherKey="PatientID" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
