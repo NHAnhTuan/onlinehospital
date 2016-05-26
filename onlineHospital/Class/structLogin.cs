@@ -7,9 +7,9 @@ namespace onlineHospital.Class
 {
     public struct loginValidate
     {
-        string loginUserName;
-        string loginFullname;
-        int loginResult;
-        string avatarURL;
+        public string loginUserName;
+        public string loginFullname;
+        public int loginResult;
+        public string avatarURL;
     }
 }

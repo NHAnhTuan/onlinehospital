@@ -7,15 +7,15 @@ namespace onlineHospital.Class
 {
     public class Doctor
     {
-        private string Address;
-        private int Age;
-        private int DoctorID;
-        private string FullName;
-        private char Gender;
-        private int Phone;
-        private int Salary;
-        private string Specialization;
-        private int VoteStar;
-        private float YearofExperience;
+        public string Address;
+        public int Age;
+        public int DoctorID;
+        public string FullName;
+        public string Gender;
+        public string Phone;
+        public float Salary;
+        public string Specialization;
+        public int VoteStar;
+        public float YearofExperience;
     }
 }

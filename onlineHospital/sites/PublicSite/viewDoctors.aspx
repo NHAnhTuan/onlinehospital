@@ -9,15 +9,8 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="mainContent" runat="server">
-    <uc1:doctorInfoControl runat="server" ID="doctorInfoControl" />
-    <uc1:doctorInfoControl runat="server" ID="doctorInfoControl1" />
-    <uc1:doctorInfoControl runat="server" ID="doctorInfoControl2" />
-     
-     
-     <div class="row"></div>
+    <asp:PlaceHolder ID="placeMainContent" runat="server"></asp:PlaceHolder>
+    <div class="row"></div>
 
-    <uc1:articleControl runat="server" ID="articleControl4" />
-    <uc1:articleControl runat="server" ID="articleControl3" />
-    <uc1:articleControl runat="server" ID="articleControl2" />
 
 </asp:Content>

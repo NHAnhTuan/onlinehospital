@@ -46,7 +46,7 @@ namespace onlineHospital.sites.PublicSite
             result.loginResult = 0; // 0: false; 1:patient; 2:dotor; 3:admin
             result.loginFullname = "";
             result.loginUserName = "userName"; // userName is dictinct from tables: doctor/patient/admin
-
+            result.avatarURL = "";
             //load data from User table and check
 
             //load data from tables of doctor/patient/admin to get .loginFullname

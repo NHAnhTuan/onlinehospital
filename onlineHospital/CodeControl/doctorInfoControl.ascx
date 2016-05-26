@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="doctorInfoControl.ascx.cs" Inherits="onlineHospital.CodeControl.doctorInfoControl1" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="doctorInfoControl.ascx.cs" Inherits="onlineHospital.CodeControl.doctorInfoControl" %>
 
 <div class="col-md-4">
     <article class="box-shadow text-center">

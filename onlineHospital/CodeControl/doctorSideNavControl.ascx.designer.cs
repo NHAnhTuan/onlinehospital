@@ -10,7 +10,8 @@
 namespace onlineHospital.CodeControl {
     
     
-    public partial class doctorInfoControl {
+    public partial class doctorSideNavControl
+    {
         
         /// <summary>
         /// imgDoctorAvatar control.
