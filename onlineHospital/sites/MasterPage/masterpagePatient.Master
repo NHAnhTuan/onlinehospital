@@ -1,0 +1,81 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="masterpagePatient.master.cs" Inherits="onlineHospital.MasterPage.masterpagePatient" %>
+
+<%@ Register Src="~/CodeControl/patientSideNavControl.ascx" TagPrefix="uc1" TagName="patientSideNavControl" %>
+<%@ Register Src="~/CodeControl/topNavBar.ascx" TagPrefix="uc1" TagName="topNavBar" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/Resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Resources/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/Resources/css/style.css" rel="stylesheet" type="text/css" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/Resources/scripts/jquery.min.js"></script>
+    
+</head>
+<body>
+    <!-- Top -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/" class="logo">
+                        <img src="/Resources/images/logo.png"/>
+                    </a>
+                </div>
+                <div class="col-md-6 text-right">
+                    <br />
+                    <br />
+                    <strong class="contact-phone">Online Hospital</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <form id="form1" runat="server" style="background-color: #f6f6f6">
+        <!-- Navigation Bar -->
+        <uc1:topNavBar runat="server" ID="topNavBar" />
+
+        <div class="container">
+            <div class="row profile">
+                <!-- patient side navigation -->
+                <div class="col-md-3">
+                    <uc1:patientSideNavControl runat="server" ID="patientSideNavControl" />
+                </div>
+
+                <div class="col-md-9">
+                    <div class="profile-content" style="background-color: #f6f6f6">
+                        <asp:ContentPlaceHolder ID="mainContent" runat="server" >
+                            <!--main 
+                                content 
+                                goes
+                                here
+                            -->
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <br />
+    <!-- footer; don't change -->
+    <footer>
+        <div class="wrap-footer">
+            <div class="container">
+                <div class="row" style="text-align: center">
+                    <h4>Copyright 2016</h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer -->
+</body>
+</html>
