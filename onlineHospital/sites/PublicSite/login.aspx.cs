@@ -22,7 +22,7 @@ namespace onlineHospital.sites.PublicSite
                 lbInform.Text = "Please enter Username and Password!";
             }
             else {
-                loginValidate thisUser = validateUser(txtUsername.Text, txtPassword.Text);
+                loginValidate thisUser = validateLoginUser(txtUsername.Text, txtPassword.Text);
                 if (thisUser.loginResult == 0)
                 {
                     lbInform.Text = "Wrong Username or Password!!!";
@@ -39,7 +39,7 @@ namespace onlineHospital.sites.PublicSite
             }
         }
 
-        public loginValidate validateUser(string userName, string password)
+        public loginValidate validateLoginUser(string userName, string password)
         {
             loginValidate result;
 

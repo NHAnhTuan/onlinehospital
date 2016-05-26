@@ -15,10 +15,13 @@
             <div class="art-content">
 
                 <div class="row">
-                    <h5><asp:Label class="col-md-5" runat="server" Text="Fullname" Style="margin-top: 5px; text-align: left;"></asp:Label></h5>
+                    <h5><asp:Label class="col-md-5" runat="server" Text="User Name" Style="margin-top: 5px; text-align: left;"></asp:Label></h5>
                     <asp:TextBox class="col-md-7" ID="txtUsername" runat="server"></asp:TextBox>
                 </div>
-
+                <div class="row">
+                    <h5><asp:Label class="col-md-5" runat="server" Text="Fullname" Style="margin-top: 5px; text-align: left;"></asp:Label></h5>
+                    <asp:TextBox class="col-md-7" ID="txtFullName" runat="server"></asp:TextBox>
+                </div>
                 <div class="row">
                     <h5><asp:Label class="col-md-5" runat="server" Text="Email" Style="margin-top: 5px; text-align: left;"></asp:Label></h5>
                     <asp:TextBox class="col-md-7" ID="txtEmail" runat="server"></asp:TextBox>

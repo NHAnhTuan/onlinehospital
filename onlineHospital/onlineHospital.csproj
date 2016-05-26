@@ -104,6 +104,7 @@
     <Content Include="CodeControl\patientSideNavControl.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Resources\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Resources\images\headerBackground.jpg" />
     <Content Include="Resources\scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Resources\css\bootstrap.min.css" />
     <Content Include="Resources\css\font-awesome.css" />
@@ -151,7 +152,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Admin.cs" />
+    <Compile Include="Class\Doctor.cs" />
+    <Compile Include="Class\Drug.cs" />
+    <Compile Include="Class\NormalAccount.cs" />
+    <Compile Include="Class\Patient.cs" />
+    <Compile Include="Class\PatientDocument.cs" />
+    <Compile Include="Class\Post.cs" />
+    <Compile Include="Class\Prescription.cs" />
+    <Compile Include="Class\PrescriptionDetail.cs" />
     <Compile Include="Class\structLogin.cs" />
+    <Compile Include="Class\Thread.cs" />
+    <Compile Include="Class\VIP_Account.cs" />
     <Compile Include="CodeControl\articleControl.ascx.cs">
       <DependentUpon>articleControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

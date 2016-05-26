@@ -23,13 +23,13 @@
 
 </head>
 <body>
-    <!-- Top; don't change -->
-    <header>
+    <!-- Top -->
+    <header style="background-image: url('/Resources/images/headerBackground.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="#" class="logo">
-                        <img src="/Resources/images/logo.png"/>
+                    <a href="/" class="logo">
+                        <img src="/Resources/images/logo.png" />
                     </a>
                 </div>
                 <div class="col-md-6 text-right">
@@ -40,6 +40,7 @@
             </div>
         </div>
     </header>
+
 
     <form id="form1" runat="server" style="background-color: #f6f6f6">
         <!-- Navigation Bar -->
@@ -59,18 +60,15 @@
             </div>
         </div>
     </form>
-    <br />
-
+    
     <!-- footer; don't change -->
-    <footer>
-        <div class="wrap-footer">
-            <div class="container">
-                <div class="row" style="text-align: center">
-                    <h4>Copyright 2016</h4>
-                </div>
+    <div style="background-color:Highlight">
+        <div class="container">
+            <div class="row" style="text-align: center">
+                <h4>Copyright 2016</h4>
             </div>
         </div>
-    </footer>
+    </div>
     <!-- Footer -->
 </body>
 </html>
