@@ -60,12 +60,12 @@ namespace onlineHospital
     partial void InsertPrescription_Detail(Prescription_Detail instance);
     partial void UpdatePrescription_Detail(Prescription_Detail instance);
     partial void DeletePrescription_Detail(Prescription_Detail instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertThread(Thread instance);
     partial void UpdateThread(Thread instance);
     partial void DeleteThread(Thread instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     partial void InsertUserType(UserType instance);
     partial void UpdateUserType(UserType instance);
     partial void DeleteUserType(UserType instance);
@@ -184,19 +184,19 @@ namespace onlineHospital
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Thread> Threads
 		{
 			get
 			{
 				return this.GetTable<Thread>();
+			}
+		}
+		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
 			}
 		}
 		
@@ -237,8 +237,6 @@ namespace onlineHospital
 		
 		private System.Nullable<int> _AdminType;
 		
-		private string _avatarImageUrl;
-		
 		private EntitySet<Thread> _Threads;
 		
 		private EntityRef<UserType> _UserType;
@@ -261,8 +259,6 @@ namespace onlineHospital
     partial void OnFullNameChanged();
     partial void OnAdminTypeChanging(System.Nullable<int> value);
     partial void OnAdminTypeChanged();
-    partial void OnavatarImageUrlChanging(string value);
-    partial void OnavatarImageUrlChanged();
     #endregion
 		
 		public Admin()
@@ -416,26 +412,6 @@ namespace onlineHospital
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_avatarImageUrl", DbType="VarChar(MAX)")]
-		public string avatarImageUrl
-		{
-			get
-			{
-				return this._avatarImageUrl;
-			}
-			set
-			{
-				if ((this._avatarImageUrl != value))
-				{
-					this.OnavatarImageUrlChanging(value);
-					this.SendPropertyChanging();
-					this._avatarImageUrl = value;
-					this.SendPropertyChanged("avatarImageUrl");
-					this.OnavatarImageUrlChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Admin_Thread", Storage="_Threads", ThisKey="AdminID", OtherKey="AdminID")]
 		public EntitySet<Thread> Threads
 		{
@@ -542,8 +518,6 @@ namespace onlineHospital
 		
 		private System.Nullable<double> _YearOfExperience;
 		
-		private string _avatarImageUrl;
-		
 		private System.Nullable<int> _DoctorType;
 		
 		private EntitySet<Post> _Posts;
@@ -576,8 +550,6 @@ namespace onlineHospital
     partial void OnVoteStarChanged();
     partial void OnYearOfExperienceChanging(System.Nullable<double> value);
     partial void OnYearOfExperienceChanged();
-    partial void OnavatarImageUrlChanging(string value);
-    partial void OnavatarImageUrlChanged();
     partial void OnDoctorTypeChanging(System.Nullable<int> value);
     partial void OnDoctorTypeChanged();
     #endregion
@@ -786,26 +758,6 @@ namespace onlineHospital
 					this._YearOfExperience = value;
 					this.SendPropertyChanged("YearOfExperience");
 					this.OnYearOfExperienceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_avatarImageUrl", DbType="VarChar(MAX)")]
-		public string avatarImageUrl
-		{
-			get
-			{
-				return this._avatarImageUrl;
-			}
-			set
-			{
-				if ((this._avatarImageUrl != value))
-				{
-					this.OnavatarImageUrlChanging(value);
-					this.SendPropertyChanging();
-					this._avatarImageUrl = value;
-					this.SendPropertyChanged("avatarImageUrl");
-					this.OnavatarImageUrlChanged();
 				}
 			}
 		}
@@ -1432,8 +1384,6 @@ namespace onlineHospital
 		
 		private string _Patient_State;
 		
-		private string _avatarImageUrl;
-		
 		private System.Nullable<int> _PatientType;
 		
 		private EntityRef<Patient_Document> _Patient_Document;
@@ -1464,8 +1414,6 @@ namespace onlineHospital
     partial void OnPhoneChanged();
     partial void OnPatient_StateChanging(string value);
     partial void OnPatient_StateChanged();
-    partial void OnavatarImageUrlChanging(string value);
-    partial void OnavatarImageUrlChanged();
     partial void OnPatientTypeChanging(System.Nullable<int> value);
     partial void OnPatientTypeChanged();
     #endregion
@@ -1635,26 +1583,6 @@ namespace onlineHospital
 					this._Patient_State = value;
 					this.SendPropertyChanged("Patient_State");
 					this.OnPatient_StateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_avatarImageUrl", DbType="VarChar(MAX)")]
-		public string avatarImageUrl
-		{
-			get
-			{
-				return this._avatarImageUrl;
-			}
-			set
-			{
-				if ((this._avatarImageUrl != value))
-				{
-					this.OnavatarImageUrlChanging(value);
-					this.SendPropertyChanging();
-					this._avatarImageUrl = value;
-					this.SendPropertyChanged("avatarImageUrl");
-					this.OnavatarImageUrlChanged();
 				}
 			}
 		}
@@ -2900,205 +2828,6 @@ namespace onlineHospital
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserID;
-		
-		private string _UserFullName;
-		
-		private string _UserLoginName;
-		
-		private string _UserLoginPassword;
-		
-		private System.Nullable<int> _UserType;
-		
-		private EntityRef<UserType> _UserType1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    partial void OnUserFullNameChanging(string value);
-    partial void OnUserFullNameChanged();
-    partial void OnUserLoginNameChanging(string value);
-    partial void OnUserLoginNameChanged();
-    partial void OnUserLoginPasswordChanging(string value);
-    partial void OnUserLoginPasswordChanged();
-    partial void OnUserTypeChanging(System.Nullable<int> value);
-    partial void OnUserTypeChanged();
-    #endregion
-		
-		public User()
-		{
-			this._UserType1 = default(EntityRef<UserType>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserFullName", DbType="NVarChar(50)")]
-		public string UserFullName
-		{
-			get
-			{
-				return this._UserFullName;
-			}
-			set
-			{
-				if ((this._UserFullName != value))
-				{
-					this.OnUserFullNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserFullName = value;
-					this.SendPropertyChanged("UserFullName");
-					this.OnUserFullNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserLoginName", DbType="VarChar(50)")]
-		public string UserLoginName
-		{
-			get
-			{
-				return this._UserLoginName;
-			}
-			set
-			{
-				if ((this._UserLoginName != value))
-				{
-					this.OnUserLoginNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserLoginName = value;
-					this.SendPropertyChanged("UserLoginName");
-					this.OnUserLoginNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserLoginPassword", DbType="VarChar(50)")]
-		public string UserLoginPassword
-		{
-			get
-			{
-				return this._UserLoginPassword;
-			}
-			set
-			{
-				if ((this._UserLoginPassword != value))
-				{
-					this.OnUserLoginPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._UserLoginPassword = value;
-					this.SendPropertyChanged("UserLoginPassword");
-					this.OnUserLoginPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="Int")]
-		public System.Nullable<int> UserType
-		{
-			get
-			{
-				return this._UserType;
-			}
-			set
-			{
-				if ((this._UserType != value))
-				{
-					if (this._UserType1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserTypeChanging(value);
-					this.SendPropertyChanging();
-					this._UserType = value;
-					this.SendPropertyChanged("UserType");
-					this.OnUserTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserType_User", Storage="_UserType1", ThisKey="UserType", OtherKey="TypeID", IsForeignKey=true)]
-		public UserType UserType1
-		{
-			get
-			{
-				return this._UserType1.Entity;
-			}
-			set
-			{
-				UserType previousValue = this._UserType1.Entity;
-				if (((previousValue != value) 
-							|| (this._UserType1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserType1.Entity = null;
-						previousValue.Users.Remove(this);
-					}
-					this._UserType1.Entity = value;
-					if ((value != null))
-					{
-						value.Users.Add(this);
-						this._UserType = value.TypeID;
-					}
-					else
-					{
-						this._UserType = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("UserType1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Thread")]
 	public partial class Thread : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3412,6 +3141,229 @@ namespace onlineHospital
 		{
 			this.SendPropertyChanging();
 			entity.Thread = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserID;
+		
+		private string _UserFullName;
+		
+		private string _UserLoginName;
+		
+		private string _UserLoginPassword;
+		
+		private System.Nullable<int> _UserType;
+		
+		private string _AvatarURL;
+		
+		private EntityRef<UserType> _UserType1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnUserFullNameChanging(string value);
+    partial void OnUserFullNameChanged();
+    partial void OnUserLoginNameChanging(string value);
+    partial void OnUserLoginNameChanged();
+    partial void OnUserLoginPasswordChanging(string value);
+    partial void OnUserLoginPasswordChanged();
+    partial void OnUserTypeChanging(System.Nullable<int> value);
+    partial void OnUserTypeChanged();
+    partial void OnAvatarURLChanging(string value);
+    partial void OnAvatarURLChanged();
+    #endregion
+		
+		public User()
+		{
+			this._UserType1 = default(EntityRef<UserType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserFullName", DbType="NVarChar(50)")]
+		public string UserFullName
+		{
+			get
+			{
+				return this._UserFullName;
+			}
+			set
+			{
+				if ((this._UserFullName != value))
+				{
+					this.OnUserFullNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserFullName = value;
+					this.SendPropertyChanged("UserFullName");
+					this.OnUserFullNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserLoginName", DbType="VarChar(50)")]
+		public string UserLoginName
+		{
+			get
+			{
+				return this._UserLoginName;
+			}
+			set
+			{
+				if ((this._UserLoginName != value))
+				{
+					this.OnUserLoginNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserLoginName = value;
+					this.SendPropertyChanged("UserLoginName");
+					this.OnUserLoginNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserLoginPassword", DbType="VarChar(50)")]
+		public string UserLoginPassword
+		{
+			get
+			{
+				return this._UserLoginPassword;
+			}
+			set
+			{
+				if ((this._UserLoginPassword != value))
+				{
+					this.OnUserLoginPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._UserLoginPassword = value;
+					this.SendPropertyChanged("UserLoginPassword");
+					this.OnUserLoginPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="Int")]
+		public System.Nullable<int> UserType
+		{
+			get
+			{
+				return this._UserType;
+			}
+			set
+			{
+				if ((this._UserType != value))
+				{
+					if (this._UserType1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserTypeChanging(value);
+					this.SendPropertyChanging();
+					this._UserType = value;
+					this.SendPropertyChanged("UserType");
+					this.OnUserTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvatarURL", DbType="VarChar(MAX)")]
+		public string AvatarURL
+		{
+			get
+			{
+				return this._AvatarURL;
+			}
+			set
+			{
+				if ((this._AvatarURL != value))
+				{
+					this.OnAvatarURLChanging(value);
+					this.SendPropertyChanging();
+					this._AvatarURL = value;
+					this.SendPropertyChanged("AvatarURL");
+					this.OnAvatarURLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserType_User", Storage="_UserType1", ThisKey="UserType", OtherKey="TypeID", IsForeignKey=true)]
+		public UserType UserType1
+		{
+			get
+			{
+				return this._UserType1.Entity;
+			}
+			set
+			{
+				UserType previousValue = this._UserType1.Entity;
+				if (((previousValue != value) 
+							|| (this._UserType1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserType1.Entity = null;
+						previousValue.Users.Remove(this);
+					}
+					this._UserType1.Entity = value;
+					if ((value != null))
+					{
+						value.Users.Add(this);
+						this._UserType = value.TypeID;
+					}
+					else
+					{
+						this._UserType = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("UserType1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

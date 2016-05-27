@@ -9,7 +9,6 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="AdminType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="avatarImageUrl" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Admin_Thread" Member="Threads" ThisKey="AdminID" OtherKey="AdminID" Type="Thread" />
       <Association Name="UserType_Admin" Member="UserType" ThisKey="AdminType" OtherKey="TypeID" Type="UserType" IsForeignKey="true" />
     </Type>
@@ -26,7 +25,6 @@
       <Column Name="Specialization" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="VoteStar" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="YearOfExperience" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="avatarImageUrl" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="DoctorType" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Doctor_Post" Member="Posts" ThisKey="DoctorID" OtherKey="DoctorID" Type="Post" />
       <Association Name="Doctor_Prescription" Member="Prescriptions" ThisKey="DoctorID" OtherKey="DoctorID" Type="Prescription" />
@@ -69,7 +67,6 @@
       <Column Name="Gender" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Patient_State" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="avatarImageUrl" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="PatientType" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Patient_Patient_Document" Member="Patient_Document" ThisKey="PatientID" OtherKey="PatientInformation" Type="Patient_Document" Cardinality="One" />
       <Association Name="Patient_Thread" Member="Threads" ThisKey="PatientID" OtherKey="PatientID" Type="Thread" />
@@ -126,16 +123,6 @@
       <Association Name="Prescription_Prescription_Detail" Member="Prescription" ThisKey="PrescriptionID" OtherKey="PrescriptionID" Type="Prescription" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.[User]" Member="Users">
-    <Type Name="User">
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="UserFullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="UserLoginName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="UserLoginPassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="UserType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="UserType_User" Member="UserType1" ThisKey="UserType" OtherKey="TypeID" Type="UserType" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Thread" Member="Threads">
     <Type Name="Thread">
       <Column Name="ThreadID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -148,6 +135,17 @@
       <Association Name="Thread_Post" Member="Posts" ThisKey="ThreadID" OtherKey="ThreadID" Type="Post" />
       <Association Name="Admin_Thread" Member="Admin" ThisKey="AdminID" OtherKey="AdminID" Type="Admin" IsForeignKey="true" />
       <Association Name="Patient_Thread" Member="Patient" ThisKey="PatientID" OtherKey="PatientID" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserFullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserLoginName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserLoginPassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AvatarURL" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="UserType_User" Member="UserType1" ThisKey="UserType" OtherKey="TypeID" Type="UserType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserType" Member="UserTypes">
